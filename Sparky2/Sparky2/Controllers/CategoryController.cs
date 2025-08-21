@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sparky2.Data;
-using Sparky2.Models;
+using Sparky2.DataAccess.Data;
+using Sparky2.Models.Models;
 
 namespace Sparky2.Controllers
 {

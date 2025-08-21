@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sparky2.Models;
+using Sparky2.Models.Models;
 
-namespace Sparky2.Data
+namespace Sparky2.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

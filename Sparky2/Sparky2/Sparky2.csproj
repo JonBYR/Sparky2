@@ -17,4 +17,10 @@
     <PackageReference Include="MySql.Data.EntityFramework" Version="9.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sparky2.DataAccess\Sparky2.DataAccess.csproj" />
+    <ProjectReference Include="..\Sparky2.Models\Sparky2.Models.csproj" />
+    <ProjectReference Include="..\Sparky2.Utility\Sparky2.Utility.csproj" />
+  </ItemGroup>
+
 </Project>

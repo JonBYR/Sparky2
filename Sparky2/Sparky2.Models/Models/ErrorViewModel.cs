@@ -1,4 +1,4 @@
-namespace Sparky2.Models
+namespace Sparky2.Models.Models
 {
     public class ErrorViewModel
     {

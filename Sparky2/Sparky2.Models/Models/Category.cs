@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Sparky2.Models
+namespace Sparky2.Models.Models
 {
     public class Category
     {

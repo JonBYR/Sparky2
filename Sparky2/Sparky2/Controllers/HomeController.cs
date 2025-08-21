@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Sparky2.Models;
+using Sparky2.Models.Models;
 
 namespace Sparky2.Controllers
 {
