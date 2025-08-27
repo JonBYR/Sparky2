@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Sparky2.Data;
+using Sparky2.DataAccess.Data;
+using Sparky2.DataAccess.Repository;
+using Sparky2.DataAccess.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("ConnectionStrings")));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sparky2.DataAccess.Data;
+using Sparky2.DataAccess.Repository.IRepository;
 using Sparky2.Models.Models;
 
 namespace Sparky2.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork db)
         {
-            _db = db;
+            _unitOfWork = db;
         }
         public IActionResult Index()
         {
-            List<Category> categories = _db.Categories.ToList();
+            List<Category> categories = _unitOfWork.CategoryRepository.GetAll().ToList();
             return View();
         }
         public IActionResult Create()
@@ -25,8 +26,8 @@ namespace Sparky2.Controllers
         {
             if(ModelState.IsValid)
             {
-                _db.Categories.Add(c); //add to database
-                _db.SaveChanges(); //save changes to database
+                _unitOfWork.CategoryRepository.Add(c); //add to database
+                _unitOfWork.Save(); //save changes to database
                 TempData["success"] = "Category created successfully"; //set a success message
                 return RedirectToAction("Index"); //go back to Index Action to reload the categories list in the view
             }
@@ -40,7 +41,7 @@ namespace Sparky2.Controllers
             {
                 return NotFound();
             }
-            Category? c = _db.Categories.Find(id); //finds through primary key
+            Category? c = _unitOfWork.CategoryRepository.Get(u=>u.Id==id); //finds through primary key
             if (c == null) return NotFound();
             return View(c);
         }
@@ -49,8 +50,8 @@ namespace Sparky2.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(c); //add to database
-                _db.SaveChanges(); //save changes to database
+                _unitOfWork.CategoryRepository.Update(c); //add to database
+                _unitOfWork.Save(); //save changes to database
                 TempData["success"] = "Category updated successfully";
                 //temp data will only stay for one request, refreshing the page will cleat the temp data
                 return RedirectToAction("Index"); //go back to Index Action to reload the categories list in the view
@@ -64,17 +65,17 @@ namespace Sparky2.Controllers
             {
                 return NotFound();
             }
-            Category? c = _db.Categories.Find(id); //finds through primary key
+            Category? c = _unitOfWork.CategoryRepository.Get(u => u.Id == id); //finds through primary key
             if (c == null) return NotFound();
             return View(c);
         }
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? c = _db.Categories.Find(id); //finds through primary key
+            Category? c = _unitOfWork.CategoryRepository.Get(u => u.Id == id); //finds through primary key
             if (c == null) return NotFound();
-            _db.Remove(c); //remove from database
-            _db.SaveChanges(); //save changes to database
+            _unitOfWork.CategoryRepository.Remove(c); //remove from database
+            _unitOfWork.Save(); //save changes to database
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index"); //go back to Index Action to reload the categories list in the view
         }
