@@ -13,6 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
     <PackageReference Include="MySql.Data" Version="9.4.0" />
     <PackageReference Include="MySql.Data.EntityFramework" Version="9.4.0" />
   </ItemGroup>
@@ -21,6 +22,10 @@
     <ProjectReference Include="..\Sparky2.DataAccess\Sparky2.DataAccess.csproj" />
     <ProjectReference Include="..\Sparky2.Models\Sparky2.Models.csproj" />
     <ProjectReference Include="..\Sparky2.Utility\Sparky2.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

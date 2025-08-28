@@ -10,6 +10,7 @@ namespace Sparky2.DataAccess.Data
 
         }
         public DbSet<Category> Categories { get; set; } // Replace with your actual DbSet properties
+        public DbSet<Product> Products { get; set; }    
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()
@@ -18,6 +19,7 @@ namespace Sparky2.DataAccess.Data
                     new Category { Id = 2, Name = "Tomato" },
                     new Category { Id = 3, Name = "Celery" }
                 );
+            
         }
     }
 }

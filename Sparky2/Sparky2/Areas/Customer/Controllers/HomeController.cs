@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Sparky2.Models;
 using Sparky2.Models.Models;
 
-namespace Sparky2.Controllers
+namespace Sparky2.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

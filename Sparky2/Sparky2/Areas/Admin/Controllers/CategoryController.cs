@@ -3,8 +3,9 @@ using Sparky2.DataAccess.Data;
 using Sparky2.DataAccess.Repository.IRepository;
 using Sparky2.Models.Models;
 
-namespace Sparky2.Controllers
+namespace Sparky2.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
